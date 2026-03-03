@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between mb-3">
+    <h3>Movimentos</h3>
+    <a routerLink="/movimentos/novo" class="btn btn-primary">
+      Novo Movimento
+    </a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Unidade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of movimentos">
+        <td>{{ m.nome }}</td>
+        <td>{{ m.unidadeMedida }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editar(m.id!)">
+            Editar
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="excluir(m.id!)">
+            Excluir
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

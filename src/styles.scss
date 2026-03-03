@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+body {
+  background: linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+  color: #e2e8f0;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+.page-title {
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-top: 40px;
+}
+
+.btn-orange {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.btn-orange:hover {
+  background-color: #ea580c;
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 120px;
+  opacity: 0.6;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #0b1220;
+  border-top: 1px solid #1f2937;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #9ca3af; /* CINZA CLARO */
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.bottom-nav a i {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.bottom-nav a.active {
+  color: #f97316; /* LARANJA */
+}
