@@ -1,0 +1,88 @@
+.movimentos-container {
+  padding: 30px;
+  color: white;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header h2 {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* BOTÃO LARANJA PADRÃO */
+.btn-novo {
+  background-color: #ff6a00;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-novo:hover {
+  background-color: #ff8124;
+}
+
+/* CARDS */
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mov-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 18px 20px;
+  transition: 0.2s;
+}
+
+.mov-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* CONTEÚDO DO CARD */
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* NOME */
+.mov-nome {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+
+/* BADGE TIPO */
+.mov-tipo {
+  background-color: #ff6a00;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+/* LIXO */
+.delete-icon {
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.delete-icon:hover {
+  transform: scale(1.2);
+}

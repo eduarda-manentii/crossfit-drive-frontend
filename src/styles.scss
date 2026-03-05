@@ -63,3 +63,98 @@ body {
 .bottom-nav a.active {
   color: #f97316; /* LARANJA */
 }
+
+.treino-container {
+  height: calc(100vh - 140px); /* desconta header + bottom nav */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.empty-content h4 {
+  color: #e5e7eb;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.empty-content p {
+  color: #9ca3af;
+  margin-top: 5px;
+}
+
+.fire {
+  font-size: 48px;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-modal {
+  width: 400px;
+  background-color: #111827;
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid #1f2937;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modal-header h5 {
+  color: #e5e7eb;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 18px;
+}
+
+label {
+  margin-top: 12px;
+  color: #d1d5db;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  color: #e5e7eb;
+}
+
+input:focus, select:focus {
+  border-color: #f97316;
+  outline: none;
+}
+
+.btn-orange-full {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #f97316;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+}
+
+.btn-orange-full:hover {
+  background-color: #ea580c;
+}

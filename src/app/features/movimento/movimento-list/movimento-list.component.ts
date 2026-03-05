@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './movimento-list.component.html',
   imports: [
     CommonModule,
-  ]
+  ],
+  styleUrl: './movimento-list.scss'
 })
 export class MovimentoListComponent implements OnInit {
 
@@ -22,25 +23,26 @@ export class MovimentoListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.carregar();
+    this.carregarMovimentos();
   }
 
-  carregar() {
-    this.service.listar().subscribe(res => {
-      this.movimentos = res;
+  carregarMovimentos() {
+    this.service.listar().subscribe({
+      next: (data) => {
+        this.movimentos = data;
+      }
     });
   }
 
-  editar(id: number) {
-    this.router.navigate(['/movimentos/editar', id]);
+  excluir(id: number) {
+    this.service.excluir(id).subscribe(() => {
+      this.carregarMovimentos();
+    });
   }
 
-  excluir(id: number) {
-    if (confirm('Deseja excluir?')) {
-      this.service.deletar(id).subscribe(() => {
-        this.carregar();
-      });
-    }
+  novoMovimento() {
+    this.router.navigate(['/movimentos/novo']);
   }
-  
+    
 }
+  

@@ -1,0 +1,26 @@
+.custom-select {
+  width: 100%;
+  background-color: #111827;
+  color: white;
+  border: 1px solid #374151;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+/* quando abre */
+.custom-select option {
+  background-color: #1f2937;
+  color: white;
+}
+
+/* opção selecionada */
+.custom-select option:checked {
+  background-color: #ff6a00;
+  color: white;
+}
+
+label {
+    font-weight: bold;
+}

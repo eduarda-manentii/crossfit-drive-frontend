@@ -1,0 +1,179 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background: linear-gradient(to bottom, #0f172a, #020617);
+}
+
+/* FORM PRINCIPAL */
+form {
+  width: 100%;
+  max-width: 700px;
+  background: #0f172a;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* GRID 2 COLUNAS */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* INPUTS, SELECT, TEXTAREA */
+input,
+select,
+textarea {
+  width: 100%;
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #ff6a00;
+  box-shadow: 0 0 0 2px rgba(255, 106, 0, 0.2);
+}
+
+/* MOVIMENTOS SECTION */
+.movimentos-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.movimentos-esquerda {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ITEM MOVIMENTO */
+.movimento-item {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 15px;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+/* BOTÃO REMOVER */
+.movimento-item button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.movimento-item button:hover {
+  transform: scale(1.2);
+}
+
+/* BOTÃO ADICIONAR */
+button[type="button"] {
+  background-color: transparent;
+  border: 1px solid #ff6a00;
+  color: #ff6a00;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+  align-self: flex-start;
+}
+
+button[type="button"]:hover {
+  background-color: #ff6a00;
+  color: white;
+}
+
+/* BOTÃO SALVAR */
+button[type="submit"] {
+  background-color: #ff6a00;
+  border: none;
+  padding: 14px;
+  border-radius: 30px;
+  font-weight: bold;
+  color: white;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff8124;
+}
+
+/* CAIXA TRANSPARENTE LATERAL */
+.movimento-preview {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.3);
+  min-height: 220px;
+  text-align: center;
+}
+
+/* FILE INPUT */
+input[type="file"] {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* TEXTAREA */
+textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+label {
+    font-weight: bold;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .movimentos-section {
+    grid-template-columns: 1fr;
+  }
+
+  .movimento-preview {
+    min-height: 120px;
+  }
+}

@@ -29,7 +29,7 @@ export class MovimentoService {
     return this.http.put<Movimento>(`${this.api}/${id}`, movimento);
   }
 
-  deletar(id: number): Observable<void> {
+  excluir(id: number): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }
 

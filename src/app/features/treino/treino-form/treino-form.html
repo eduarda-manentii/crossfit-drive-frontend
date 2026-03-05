@@ -1,1 +1,103 @@
-<p>treino-form works!</p>
+<form [formGroup]="form" (ngSubmit)="salvar()">
+
+  <div class="modal-header">
+    <h5>REGISTRAR TREINO</h5>
+    <button class="close-btn" (click)="fechar()">✕</button>
+  </div>
+
+  <!-- GRID 2 COLUNAS -->
+  <div class="grid-2">
+
+    <div class="campo">
+      <label>Nome do WOD</label>
+      <input formControlName="nome" placeholder="Ex: Fran" />
+    </div>
+
+    <div class="campo">
+      <label>Data</label>
+      <input type="date" formControlName="data" />
+    </div>
+
+    <div class="campo">
+      <label>Tipo</label>
+      <select formControlName="tipo">
+        <option value="AMRAP">AMRAP</option>
+        <option value="FORTIME">FOR TIME</option>
+        <option value="EMOM">EMOM</option>
+        <option value="STRENGTH">STRENGTH</option>
+        <option value="SKILL">SKILL</option>
+        <option value="OUTRO">Outro</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>Rounds</label>
+      <input type="number" formControlName="rounds" />
+    </div>
+
+    <div class="campo">
+      <label>Tempo esperado (min)</label>
+      <input type="number" formControlName="tempoEsperado" />
+    </div>
+
+    <div class="campo">
+      <label>Tempo real (min)</label>
+      <input type="number" formControlName="tempoReal" />
+    </div>
+
+  </div>
+
+  <!-- MOVIMENTOS -->
+  <div class="movimentos-section">
+
+    <div class="movimentos-esquerda">
+      <label>Movimentos</label>
+
+      <div formArrayName="movimentos">
+
+        <div *ngFor="let mov of movimentos.controls; let i = index"
+             [formGroupName]="i"
+             class="movimento-item">
+
+          <select formControlName="movimentoId">
+            <option *ngFor="let m of listaMovimentos" [value]="m.id">
+              {{ m.nome }}
+            </option>
+          </select>
+
+          <input type="number" formControlName="reps" placeholder="Reps" />
+          <input type="number" formControlName="carga" placeholder="Carga" />
+
+          <select formControlName="unidade">
+            <option value="kg">kg</option>
+            <option value="lb">lb</option>
+          </select>
+
+          <button type="button" (click)="removerMovimento(i)">🗑</button>
+
+        </div>
+
+      </div>
+
+      <button type="button" (click)="adicionarMovimento()">
+        + Movimento
+      </button>
+
+    </div>
+  </div>
+
+  <!-- RESTANTE EM COLUNA ÚNICA -->
+  <label>Score/Resultados</label>
+  <input formControlName="score" />
+
+  <label>Mídia</label>
+  <input type="file"
+         (change)="onFileSelected($event)"
+         accept="image/*,video/*" />
+
+  <label>Notas</label>
+  <textarea formControlName="notas"></textarea>
+
+  <button type="submit">Salvar WOD</button>
+
+</form>

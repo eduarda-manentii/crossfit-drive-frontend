@@ -1,18 +1,27 @@
 <app-header></app-header>
 
+<router-outlet></router-outlet>
+
 <div class="bottom-nav">
 
-  <a routerLink="/treinos" routerLinkActive="active">
+  <a 
+    routerLink="/treinos"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
     <i class="bi bi-clipboard-data"></i>
     <span>WOD</span>
   </a>
 
-  <a routerLink="/movimentos" routerLinkActive="active">
+  <a 
+    routerLink="/movimentos"
+    routerLinkActive="active">
     <i class="bi bi-lightning-charge"></i>
     <span>Movimentos</span>
   </a>
 
-  <a routerLink="/progresso" routerLinkActive="active">
+  <a 
+    routerLink="/progresso"
+    routerLinkActive="active">
     <i class="bi bi-graph-up"></i>
     <span>Progresso</span>
   </a>

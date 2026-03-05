@@ -24,7 +24,7 @@ export class TreinoService {
     return this.http.put<Treino>(`${this.api}/${id}`, treino);
   }
 
-  deletar(id: number) {
+  excluir(id: number) {
     return this.http.delete(`${this.api}/${id}`);
   }
 

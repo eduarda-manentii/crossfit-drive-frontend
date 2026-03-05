@@ -1,28 +1,47 @@
-<div class="container mt-4">
-  <h3>{{ editando ? 'Editar Movimento' : 'Novo Movimento' }}</h3>
+<div class="modal-overlay">
 
-  <form (ngSubmit)="salvar()">
-    <div class="mb-3">
-      <label class="form-label">Nome</label>
-      <input
+  <div class="custom-modal">
+
+    <div class="modal-header">
+      <h5>NOVO MOVIMENTO</h5>
+      <button class="close-btn" (click)="fechar()">✕</button>
+    </div>
+
+    <form (ngSubmit)="salvar()">
+
+      <label>Nome</label>
+      <input 
         type="text"
-        class="form-control"
         [(ngModel)]="movimento.nome"
         name="nome"
+        placeholder="Ex: Clean & Jerk"
         required>
-    </div>
 
-    <div class="mb-3">
-      <label class="form-label">Unidade de Medida</label>
+      <label>Categoria</label>
+
+      <select class="custom-select"
+              [(ngModel)]="movimento.categoria"
+              name="categoria">
+
+        <option value="Weightlifting">Weightlifting</option>
+        <option value="Gymnastics">Gymnastics</option>
+        <option value="Cardio">Cardio</option>
+        <option value="Outro">Outro</option>
+      </select>
+
+      <label>Descrição (opcional)</label>
       <input
         type="text"
-        class="form-control"
-        [(ngModel)]="movimento.unidadeMedida"
-        name="unidadeMedida"
-        required>
-    </div>
+        [(ngModel)]="movimento.descricao"
+        name="descricao"
+        placeholder="Detalhes do movimento">
 
-    <button class="btn btn-success">Salvar</button>
-    <a routerLink="/movimentos" class="btn btn-secondary ms-2">Cancelar</a>
-  </form>
+      <button type="submit" class="btn-orange-full">
+        Adicionar
+      </button>
+
+    </form>
+
+  </div>
+
 </div>
