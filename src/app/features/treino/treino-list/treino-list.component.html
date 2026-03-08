@@ -1,25 +1,50 @@
-<div class="treinos-container">
-
-  <div class="header">
-    <h2>TREINOS</h2>
-    <button class="btn-novo" (click)="novoTreino()">
-      + Novo WOD
-    </button>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-white m-0 fw-bold">TREINOS</h2>
+    <button class="btn btn-orange px-3 fw-bold" (click)="novoTreino()">+ NOVO</button>
   </div>
 
-  <div class="cards-container">
+  <div class="d-flex flex-column gap-3">
+    <div class="card-treino" *ngFor="let treino of treinos; let i = index">
+      
+      <div class="card-header-main" (click)="toggleExpand(i)">
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge-tipo">{{ treino.tipo }}</span>
+          <span class="text-secondary small">{{ treino.data | date:'dd MMM yyyy' }}</span>
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-column">
+            <strong class="treino-nome text-white">{{ treino.nome }}</strong>
+            <div class="time-info text-secondary small d-flex align-items-center gap-1">
+               {{ treino.tempoEstimado || 0 }} min
+            </div>
+          </div>
+          <span class="arrow-icon" [class.expanded]="expandedIndex === i">▼</span>
+        </div>
+      </div>
 
-    <!-- Quando tiver treinos -->
-    <div class="treino-card" *ngFor="let treino of treinos">
+      <div class="card-expanded-content" *ngIf="expandedIndex === i">
+        <div *ngIf="treino.midiaUrl" class="midia-container">
+          <video *ngIf="isVideo(treino.midiaUrl)" [src]="treino.midiaUrl" controls></video>
+          <img *ngIf="!isVideo(treino.midiaUrl)" [src]="treino.midiaUrl" (click)="abrirMidia(treino.midiaUrl)">
+        </div>
+
+        <div class="results-grid">
+          <div class="res-row"><span>Rounds:</span> <strong>{{ treino.repeticaoEstimada || 0 }}</strong></div>
+          <div class="res-row"><span>Esperado:</span> <strong>{{ treino.tempoEstimado || 0 }} min</strong></div>
+          <div class="res-row"><span>Realizado:</span> <strong class="text-orange">{{ treino.tempoFeito || 0 }} min</strong></div>
+          <div class="res-row"><span>Score:</span> <strong>{{ treino.repeticaoFeita || 0 }}</strong></div>
+        </div>
+
+        <button *ngIf="treino.id" class="btn-delete-full" (click)="excluirTreino(treino.id)">
+          Excluir
+        </button>
+      </div>
     </div>
 
-    <!-- Quando não tiver treinos -->
-    <div class="empty-content" *ngIf="!treinos || treinos.length === 0">
-      <div class="fire">🔥</div>
-      <h4>Nenhum treino registrado</h4>
-      <p>Registre seu primeiro WOD.</p>
+    <div class="text-center py-5" *ngIf="!treinos.length">
+      <h4 class="text-secondary">Nenhum treino registrado</h4>
     </div>
-
   </div>
-
 </div>

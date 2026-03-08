@@ -17,16 +17,15 @@
         placeholder="Ex: Clean & Jerk"
         required>
 
-      <label>Categoria</label>
+      <label>Tipo</label>
 
       <select class="custom-select"
-              [(ngModel)]="movimento.categoria"
-              name="categoria">
+              [(ngModel)]="movimento.tipo"
+              name="tipo">
 
-        <option value="Weightlifting">Weightlifting</option>
-        <option value="Gymnastics">Gymnastics</option>
-        <option value="Cardio">Cardio</option>
-        <option value="Outro">Outro</option>
+        <option *ngFor="let tipo of tipos" [value]="tipo">
+          {{ tipo }}
+        </option>
       </select>
 
       <label>Descrição (opcional)</label>

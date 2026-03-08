@@ -11,7 +11,6 @@ export const routes: Routes = [
   { path: 'treinos',    component: TreinoList },
   { path: 'treinos/novo',  component: TreinoForm },
   { path: 'movimentos', component: MovimentoListComponent },
-  { path: 'movimentos', component: MovimentoListComponent },
   { path: 'movimentos/novo', component: MovimentoFormComponent },
   { path: 'movimentos/editar/:id',  component: MovimentoFormComponent },
   { path: 'progresso', component: ProgressoList }

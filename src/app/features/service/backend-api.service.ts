@@ -62,4 +62,9 @@ export class BackendApiService {
   excluirItemMovimento(id: number): Observable<void> {
     return this.http.delete<void>(`${this.API}/item-movimentos/${id}`);
   }
+
+  uploadMidia(formData: FormData): Observable<any> {
+    return this.http.post(`${this.API}/api/midia/upload`, formData);
+  }
+  
 }

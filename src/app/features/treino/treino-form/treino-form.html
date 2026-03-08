@@ -1,103 +1,128 @@
-<form [formGroup]="form" (ngSubmit)="salvar()">
+<!-- treino-form.html -->
+<div class="container py-4">
+  <form [formGroup]="form" (ngSubmit)="salvar()"
+    class="card bg-dark text-white shadow-lg p-4 rounded-4 border-0 mx-auto" style="max-width: 800px;">
 
-  <div class="modal-header">
-    <h5>REGISTRAR TREINO</h5>
-    <button class="close-btn" (click)="fechar()">✕</button>
-  </div>
-
-  <!-- GRID 2 COLUNAS -->
-  <div class="grid-2">
-
-    <div class="campo">
-      <label>Nome do WOD</label>
-      <input formControlName="nome" placeholder="Ex: Fran" />
+    <div class="modal-header border-bottom border-secondary mb-4 pb-3 d-flex justify-content-between align-items-center">
+      <h5 class="fw-bold mb-0 text-orange">REGISTRAR TREINO</h5>
+      <button type="button" class="btn-close btn-close-white" (click)="fechar()"></button>
     </div>
 
-    <div class="campo">
-      <label>Data</label>
-      <input type="date" formControlName="data" />
-    </div>
-
-    <div class="campo">
-      <label>Tipo</label>
-      <select formControlName="tipo">
-        <option value="AMRAP">AMRAP</option>
-        <option value="FORTIME">FOR TIME</option>
-        <option value="EMOM">EMOM</option>
-        <option value="STRENGTH">STRENGTH</option>
-        <option value="SKILL">SKILL</option>
-        <option value="OUTRO">Outro</option>
-      </select>
-    </div>
-
-    <div class="campo">
-      <label>Rounds</label>
-      <input type="number" formControlName="rounds" />
-    </div>
-
-    <div class="campo">
-      <label>Tempo esperado (min)</label>
-      <input type="number" formControlName="tempoEsperado" />
-    </div>
-
-    <div class="campo">
-      <label>Tempo real (min)</label>
-      <input type="number" formControlName="tempoReal" />
-    </div>
-
-  </div>
-
-  <!-- MOVIMENTOS -->
-  <div class="movimentos-section">
-
-    <div class="movimentos-esquerda">
-      <label>Movimentos</label>
-
-      <div formArrayName="movimentos">
-
-        <div *ngFor="let mov of movimentos.controls; let i = index"
-             [formGroupName]="i"
-             class="movimento-item">
-
-          <select formControlName="movimentoId">
-            <option *ngFor="let m of listaMovimentos" [value]="m.id">
-              {{ m.nome }}
-            </option>
-          </select>
-
-          <input type="number" formControlName="reps" placeholder="Reps" />
-          <input type="number" formControlName="carga" placeholder="Carga" />
-
-          <select formControlName="unidade">
-            <option value="kg">kg</option>
-            <option value="lb">lb</option>
-          </select>
-
-          <button type="button" (click)="removerMovimento(i)">🗑</button>
-
-        </div>
-
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label fw-bold">Nome do WOD</label>
+        <input type="text" formControlName="nome" class="form-control bg-navy border-secondary text-white"
+          placeholder="Ex: Fran, Murph, Helen..." />
       </div>
 
-      <button type="button" (click)="adicionarMovimento()">
-        + Movimento
-      </button>
+      <div class="col-md-6">
+        <label class="form-label fw-bold">Data</label>
+        <input type="date" formControlName="data" class="form-control bg-navy border-secondary text-white" />
+      </div>
 
+      <div class="col-md-6">
+        <label class="form-label fw-bold">Tipo</label>
+        <select formControlName="tipo" class="form-select bg-navy border-secondary text-white">
+          <option value="AMRAP">AMRAP</option>
+          <option value="FORTIME">FOR TIME</option>
+          <option value="EMOM">EMOM</option>
+          <option value="STRENGTH">STRENGTH</option>
+          <option value="SKILL">SKILL</option>
+          <option value="OUTRO">Outro</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-bold">Rounds</label>
+        <input type="number" formControlName="rounds" class="form-control bg-navy border-secondary text-white"
+          placeholder="Ex: 5" />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-bold">Tempo esperado (min)</label>
+        <input type="number" formControlName="tempoEsperado" class="form-control bg-navy border-secondary text-white"
+          placeholder="Ex: 20" />
+      </div>
+
+      <div class="col-12 col-md-6 ms-auto">
+        <label class="form-label fw-bold">Tempo real (min/seg)</label>
+        <input type="text" formControlName="tempoReal" class="form-control bg-navy border-secondary text-white"
+          placeholder="Ex: 15:40" />
+      </div>
     </div>
-  </div>
 
-  <!-- RESTANTE EM COLUNA ÚNICA -->
-  <label>Score/Resultados</label>
-  <input formControlName="score" />
+    <div class="mt-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <label class="form-label fw-bold fs-5 mb-0">Movimentos</label>
+        <button type="button" class="btn btn-outline-orange btn-sm rounded-pill px-3" (click)="adicionarMovimento()">
+          + Adicionar
+        </button>
+      </div>
 
-  <label>Mídia</label>
-  <input type="file"
-         (change)="onFileSelected($event)"
-         accept="image/*,video/*" />
+      <div formArrayName="movimentos">
+        <div class="row g-2 mb-3 align-items-end p-3 rounded-3 movimento-card"
+          *ngFor="let mov of movimentos.controls; let i = index" [formGroupName]="i">
 
-  <label>Notas</label>
-  <textarea formControlName="notas"></textarea>
+          <div class="col-12 col-md-4">
+            <label class="small text-secondary fw-bold">Movimento</label>
+            <select formControlName="movimentoId" class="form-select bg-dark border-secondary text-white">
+              <option value="">Selecione...</option>
+              <option *ngFor="let m of listaMovimentos" [value]="m.id">{{ m.nome }}</option>
+            </select>
+          </div>
 
-  <button type="submit">Salvar WOD</button>
+          <div class="col-4 col-md-2">
+            <label class="small text-secondary fw-bold">Reps</label>
+            <input type="number" formControlName="reps" class="form-control bg-dark border-secondary text-white" placeholder="0">
+          </div>
 
-</form>
+          <div class="col-4 col-md-2">
+            <label class="small text-secondary fw-bold">Carga</label>
+            <input type="number" formControlName="carga" class="form-control bg-dark border-secondary text-white" placeholder="0">
+          </div>
+
+          <div class="col-3 col-md-2">
+            <label class="small text-secondary fw-bold">Unid.</label>
+            <select formControlName="unidade" class="form-select bg-dark border-secondary text-white">
+              <option value="kg">kg</option>
+              <option value="lb">lb</option>
+            </select>
+          </div>
+
+          <div class="col-1 col-md-2 text-end">
+            <button type="button" class="btn btn-link text-danger p-0 pb-2" (click)="removerMovimento(i)">
+              <span class="fs-4">🗑</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-4 border-secondary opacity-25">
+
+    <div class="row g-3">
+      <div class="col-12">
+        <label class="form-label fw-bold">Score / Resultado Final</label>
+        <input formControlName="score" class="form-control bg-navy border-secondary text-white"
+          placeholder="Ex: 150 reps, 210kg, RX..." />
+      </div>
+
+      <div class="mt-4 mb-3">
+        <label class="form-label fw-bold">Adicionar Foto / Vídeo</label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*,video/*" class="form-control bg-navy border-secondary text-white">
+      </div>
+
+      <div class="col-12">
+        <label class="form-label fw-bold">Notas do Treino</label>
+        <textarea formControlName="notas" class="form-control bg-navy border-secondary text-white" rows="3"
+          placeholder="Como foi o treino? Adaptou algo?"></textarea>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-orange-full fw-bold mt-4 shadow-sm px-5 py-2">
+        SALVAR WOD
+      </button>
+    </div>
+  </form>
+</div>

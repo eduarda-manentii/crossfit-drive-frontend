@@ -1,0 +1,103 @@
+.filters-container {
+  background-color: #1a1d23;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #2d323a;
+}
+
+.custom-select {
+  background-color: #111418;
+  border: 1px solid #2d323a;
+  color: white;
+  padding: 10px;
+  &:focus {
+    background-color: #111418;
+    color: white;
+    border-color: #ff6a00;
+    box-shadow: none;
+  }
+}
+
+.metric-card {
+  background-color: #1a1d23;
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid #2d323a;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    &.orange { color: #ff6a00; }
+  }
+
+  .value {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .label {
+    color: #6c757d;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+  }
+}
+
+.icon-large {
+  font-size: 4rem;
+  opacity: 0.3;
+}
+
+.material-icons {
+  &.orange {
+    color: #ff6a00; /* O laranja padrão que estamos usando */
+    font-size: 2.5rem; /* Tamanho do ícone */
+    margin-bottom: 10px;
+  }
+}
+
+.metric-card {
+  background-color: #1a1d23;
+  border-radius: 12px;
+  padding: 30px 15px; /* Ajuste o padding para telas menores */
+  text-align: center;
+  border: 1px solid #2d323a;
+  height: 100%; /* Faz com que todos os cards tenham a mesma altura na linha */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: #ff6a00;
+  }
+
+  .material-icons.orange {
+    color: #ff6a00;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  .value {
+    color: white;
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+
+  .label {
+    color: #6c757d;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
